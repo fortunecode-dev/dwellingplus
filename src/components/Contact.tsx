@@ -200,7 +200,7 @@ export default function ContactSection() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 backdrop-blur-md" />
+        <div className="absolute inset-0 backdrop-blur-[5px]" />
       </div>
 
       {/* Contenedor general */}
@@ -532,10 +532,8 @@ function InputField(props: {
         onBlur={onBlur}
         className={[
           "mt-1 w-full rounded-md border outline-none",
-          error ? "border-red-300" : "border-white/40",
-          "bg-white/20", // MÁS transparencia
+          error ? "border-red-300" : "border-white/80",
           "placeholder:text-gray-600",
-          "backdrop-blur-sm",
           compact ? "px-3 py-2 text-sm" : "px-3 py-2.5 sm:py-3 text-sm sm:text-base",
           "focus:ring-2 focus:ring-gray-300",
         ].join(" ")}
@@ -561,10 +559,8 @@ function TextAreaField(props: {
         onChange={(e) => onChange(e.target.value)}
         className={[
           "mt-1 w-full rounded-md border outline-none min-h-[96px] sm:min-h-[120px]",
-          "border-white/40",
-          "bg-white/20", // MÁS transparencia
+          "border-white/80",
           "placeholder:text-gray-600",
-          "backdrop-blur-sm",
           compact ? "px-3 py-2 text-sm" : "px-3 py-2.5 sm:py-3 text-sm sm:text-base",
           "focus:ring-2 focus:ring-gray-300",
         ].join(" ")}
