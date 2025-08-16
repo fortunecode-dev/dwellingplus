@@ -49,9 +49,9 @@ export default function AskQuestion({ compact, onConfirm }: Props) {
       aria-label={t("questionForm.ariaLabel")}
     >
       <div className="flex flex-col gap-1">
-        <label className="text-sm sm:text-sm font-medium text-gray-700">
+        {/* <label className="text-sm sm:text-sm font-medium text-gray-700">
           {t("questionForm.question")}
-        </label>
+        </label> */}
         <textarea
           rows={2}
           value={question}
@@ -61,7 +61,7 @@ export default function AskQuestion({ compact, onConfirm }: Props) {
         />
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-row-reverse">
         <button
           type="submit"
           disabled={!canOpenModal}

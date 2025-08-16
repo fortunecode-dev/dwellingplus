@@ -27,7 +27,7 @@ export default async function RootLayout({
   const sections = ["home", "services", "faq"];
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className="scroll-smooth">
 
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}

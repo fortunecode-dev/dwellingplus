@@ -21,7 +21,7 @@ export default function Hero() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 backdrop-blur-md bg-white/20" />
+                <div className="absolute inset-0 backdrop-blur-[3px] bg-white/10" />
             </div>
 
             {/* Contenido */}
@@ -34,7 +34,7 @@ export default function Hero() {
                         <Image
                             src="/logo.png"
                             alt="Logo"
-                            width={ 500 }
+                            width={ 700 }
                             height={  100 }
                             className="object-contain"
                             priority

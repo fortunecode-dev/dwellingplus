@@ -1,188 +1,188 @@
 {
   "common": {
     "companyName": "dW+",
-    "contact": "Contacto",
-    "readMore": "LEER MÁS →",
-    "getStarted": "Comenzar →",
-    "moreInfo": "Más información",
-    "send": "Enviar",
-    "close": "Cerrar",
-    "success": "Éxito",
+    "contact": "Contact",
+    "readMore": "READ MORE →",
+    "getStarted": "Get Started →",
+    "moreInfo": "More Information",
+    "send": "Send",
+    "close": "Close",
+    "success": "Success",
     "error": "Error",
-    "requiredField": "Por favor complete los campos obligatorios.",
-    "submissionSuccess": "¡Tu mensaje ha sido enviado con éxito!",
-    "submissionError": "Hubo un problema al enviar tu mensaje. Por favor inténtalo de nuevo más tarde.",
-    "thanks": "¡Gracias! Pronto te responderemos.",
-    "copyright": "DwellingPlus © {year} Todos los derechos reservados.",
-    "mapData": "Datos del mapa © colaboradores de OpenStreetMap",
-    "photoCredit": "Fotos de Mobile Homes por Vecteezy",
-    "adminPanel": "Panel de administración",
-    "sending": "Enviando...",
-    "clear": "Limpiar",
-    "cancel":"Cancelar"
+    "requiredField": "Please complete the required fields.",
+    "submissionSuccess": "Your message has been sent successfully!",
+    "submissionError": "There was a problem sending your message. Please try again later.",
+    "thanks": "Thank you! We will get back to you soon.",
+    "copyright": "DwellingPlus © {year} All rights reserved.",
+    "mapData": "Map data © OpenStreetMap contributors",
+    "photoCredit": "Mobile Homes photos by Vecteezy",
+    "adminPanel": "Admin Panel",
+    "sending": "Sending...",
+    "clear": "Clear",
+    "cancel": "Cancel"
   },
   "header": {
     "sections": {
-      "home": "Inicio",
-      "services": "Servicios",
-      "faq": "Preguntas Frecuentes"
+      "home": "Home",
+      "services": "Services",
+      "faq": "FAQ"
     }
   },
   "landing": {
-    "title": "Nuestro objetivo es ayudarte a desarrollar tu propiedad. Trabajamos con pasión para cumplir con las expectativas de propietarios y desarrolladores."
+    "title": "Our goal is to help you develop your property. We work with passion to meet the expectations of property owners and developers."
   },
   "services": {
-    "title": "Nuestros Servicios",
-    "subtitle": "Ofrecemos una amplia gama de servicios para satisfacer tus necesidades.",
-    "makeQuestion": "Hacer una pregunta",
+    "title": "Our Services",
+    "subtitle": "We offer a wide range of services to meet your needs.",
+    "makeQuestion": "Ask a Question",
     "servicesList": {
       "0": {
         "id": "adu",
-        "title": "Construyamos un ADU",
-        "description": "Convierte tu espacio disponible en una fuente de valor con una Unidad de Vivienda Accesoria (ADU).",
-        "content": "Convierte tu espacio disponible en una fuente de valor con una Unidad de Vivienda Accesoria (ADU). Nuestro servicio de construcción de ADU te permite aprovechar al máximo tu propiedad, ya sea para generar ingresos por alquiler, alojar cómodamente a familiares o ampliar tu espacio vital. Diseñamos soluciones funcionales y eficientes que cumplen con las regulaciones locales, optimizando energía y materiales para un hogar sostenible. Con una inversión inteligente, un ADU puede ofrecerte independencia financiera y flexibilidad, adaptándose a tus necesidades actuales y futuras."
+        "title": "Let's Build an ADU",
+        "description": "Turn your available space into a source of value with an Accessory Dwelling Unit (ADU).",
+        "content": "Turn your available space into a source of value with an Accessory Dwelling Unit (ADU). Our ADU construction service allows you to make the most of your property, whether to generate rental income, comfortably house family members, or expand your living space. We design functional and efficient solutions that comply with local regulations, optimizing energy and materials for a sustainable home. With a smart investment, an ADU can provide you with financial independence and flexibility, adapting to your current and future needs."
       },
       "1": {
         "id": "remodeling",
-        "title": "Remodelación y Ampliación de Hogares",
-        "description": "Transforma tu hogar para que se adapte mejor a tu estilo de vida y necesidades familiares.",
-        "content": "Nuestros servicios de remodelación y ampliación de hogares están diseñados para optimizar tu plano existente, creando espacios más funcionales, cómodos y eficientes. Ya sea redistribuyendo áreas clave, ampliando habitaciones o modernizando baños, te ayudamos a aprovechar al máximo cada metro cuadrado de manera estratégica. Con soluciones inteligentes de diseño y construcción, convertimos tu hogar en un entorno que fluye naturalmente y mejora tu bienestar."
+        "title": "Home Remodeling and Expansion",
+        "description": "Transform your home to better suit your lifestyle and family needs.",
+        "content": "Our home remodeling and expansion services are designed to optimize your existing layout, creating more functional, comfortable, and efficient spaces. Whether redistributing key areas, expanding rooms, or modernizing bathrooms, we help you make the most of every square foot strategically. With smart design and construction solutions, we turn your home into an environment that flows naturally and enhances your well-being."
       },
       "2": {
         "id": "backyard",
-        "title": "Espacios Inspiradores en Patios",
-        "description": "Convierte tu patio trasero en un oasis diseñado para comodidad y convivencia.",
-        "content": "Nuestro servicio de transformación de exteriores crea áreas habitables con elegantes pérgolas, fogatas para momentos cálidos, parrillas para reuniones inolvidables y un equilibrio perfecto entre adoquines de concreto y césped natural. Una iluminación acogedora resalta cada detalle, creando un ambiente ideal para relajarse, compartir y aprovechar al máximo tu hogar. Nuestros arquitectos y diseñadores convertirán tu patio en un espacio soñado para toda la familia."
+        "title": "Inspiring Backyard Spaces",
+        "description": "Turn your backyard into an oasis designed for comfort and togetherness.",
+        "content": "Our outdoor transformation service creates living areas with elegant pergolas, fire pits for cozy moments, grills for unforgettable gatherings, and a perfect balance of concrete pavers and natural grass. Warm lighting highlights every detail, creating the ideal atmosphere to relax, share, and make the most of your home. Our architects and designers will turn your backyard into a dream space for the whole family."
       },
       "3": {
         "id": "repair",
-        "title": "Construcción General y Reparaciones",
-        "description": "Ofrecemos soluciones integrales para construcción, mantenimiento, pintura y reparaciones.",
-        "content": "Ofrecemos soluciones integrales para construcción, mantenimiento, pintura, reparación de techos, paredes, pisos y cualquier área dañada del edificio. Ya sea que necesites desarrollar un proyecto desde cero o restaurar estructuras existentes, nuestro equipo está listo para entregar resultados de calidad. Desde mejoras estructurales hasta renovaciones detalladas, proporcionamos un servicio confiable adaptado a tus necesidades."
+        "title": "General Construction and Repairs",
+        "description": "We offer comprehensive solutions for construction, maintenance, painting, and repairs.",
+        "content": "We offer comprehensive solutions for construction, maintenance, painting, roof, wall, and floor repairs, as well as any damaged area of the building. Whether you need to develop a project from scratch or restore existing structures, our team is ready to deliver quality results. From structural improvements to detailed renovations, we provide reliable service tailored to your needs."
       },
       "4": {
         "id": "support",
-        "title": "Apoyo Financiero",
-        "description": "Te ayudamos a acceder a los recursos financieros disponibles para desarrollar proyectos de construcción y renovación.",
-        "content": "A través de opciones de crédito o préstamos estructurados, los propietarios pueden invertir en una Unidad de Vivienda Accesoria (ADU) o mejorar su hogar, distribuyendo el pago en cuotas asequibles. Este servicio proporciona flexibilidad financiera, facilitando la materialización de proyectos sin comprometer la estabilidad económica."
+        "title": "Financial Support",
+        "description": "We help you access the financial resources available to develop construction and renovation projects.",
+        "content": "Through credit options or structured loans, property owners can invest in an Accessory Dwelling Unit (ADU) or improve their home, spreading payments into affordable installments. This service provides financial flexibility, making it easier to bring projects to life without compromising economic stability."
       }
     }
   },
   "faq": {
-    "title": "Preguntas Frecuentes",
-    "makeQuestion": "Hacer una pregunta",
-    "questionPlaceholder": "Escribe tu pregunta aquí...",
-    "contactPrompt": "Proporciónanos una forma de contactarte",
-    "emailPlaceholder": "Tu dirección de correo",
-    "phonePlaceholder": "Tu número telefónico",
+    "title": "Frequently Asked Questions",
+    "makeQuestion": "Ask a Question",
+    "questionPlaceholder": "Type your question here...",
+    "contactPrompt": "Provide us with a way to contact you",
+    "emailPlaceholder": "Your email address",
+    "phonePlaceholder": "Your phone number",
     "questions": {
       "0": {
-        "question": "¿Qué servicios ofrece DwellingPlus?",
-        "answer": "Ofrecemos una gama completa de servicios de construcción y remodelación, especializándonos en Unidades de Vivienda Accesoria (ADU), renovaciones interiores, mejoras de áreas exteriores y reparaciones en el hogar. Nuestros servicios incluyen:\n- Análisis de terreno para evaluar viabilidad\n- Propuestas de bocetos y renders para conceptos de diseño\n- Planos arquitectónicos\n- Gestión de permisos municipales\n- Construcción y gestión de proyectos\n- Soluciones de financiamiento para tu proyecto"
+        "question": "What services does DwellingPlus offer?",
+        "answer": "We offer a full range of construction and remodeling services, specializing in Accessory Dwelling Units (ADUs), interior renovations, outdoor improvements, and home repairs. Our services include:\n- Land analysis to assess feasibility\n- Sketch proposals and renders for design concepts\n- Architectural plans\n- Municipal permit management\n- Construction and project management\n- Financing solutions for your project"
       },
       "1": {
-        "question": "¿Qué es un ADU y cómo puede beneficiar mi propiedad?",
-        "answer": "Una Unidad de Vivienda Accesoria (ADU) es un espacio habitable separado e independiente ubicado en el mismo terreno que una residencia principal. Los ADU ofrecen numerosos beneficios, como aumentar el valor de la propiedad, generar ingresos por alquiler y crear un espacio privado para familiares o invitados. Además, contribuyen a soluciones de vivienda en áreas urbanas al maximizar el uso eficiente del terreno."
+        "question": "What is an ADU and how can it benefit my property?",
+        "answer": "An Accessory Dwelling Unit (ADU) is a separate and independent living space located on the same lot as a main residence. ADUs offer numerous benefits, such as increasing property value, generating rental income, and creating a private space for family or guests. They also contribute to housing solutions in urban areas by maximizing efficient land use."
       },
       "2": {
-        "question": "¿Cuáles son los requisitos para construir un ADU en mi terreno?",
-        "answer": "Los requisitos varían según la ciudad y el condado, pero generalmente incluyen regulaciones de zonificación, tamaño mínimo/máximo de la unidad, distancias de separación de los límites de la propiedad y conexiones para servicios públicos. En California, las leyes estatales han facilitado la construcción de ADUs, reduciendo restricciones sobre estacionamiento y permitiendo construirlos incluso en zonas de vivienda unifamiliar."
+        "question": "What are the requirements to build an ADU on my property?",
+        "answer": "Requirements vary by city and county but generally include zoning regulations, minimum/maximum unit size, setbacks from property boundaries, and utility connections. In California, state laws have made it easier to build ADUs by reducing parking restrictions and allowing them even in single-family residential zones."
       },
       "3": {
-        "question": "¿Cómo funciona el proceso de permisos?",
-        "answer": "El proceso incluye evaluación del sitio, planificación arquitectónica, revisiones de ingeniería y aprobaciones municipales. Primero evaluamos el terreno para determinar su viabilidad según las leyes de zonificación y códigos de construcción. Luego preparamos planos detallados que cumplen con los requisitos regulatorios. Una vez finalizados, los presentamos a la ciudad para su revisión y aprobación."
+        "question": "How does the permitting process work?",
+        "answer": "The process includes site evaluation, architectural planning, engineering reviews, and municipal approvals. We first assess the property to determine its feasibility according to zoning laws and building codes. Then we prepare detailed plans that meet regulatory requirements. Once finalized, we submit them to the city for review and approval."
       },
       "4": {
-        "question": "¿Ofrecen financiamiento para construcción y remodelación?",
-        "answer": "Sí, ayudamos a los propietarios a encontrar opciones de financiamiento adecuadas, que pueden incluir préstamos con garantía hipotecaria, préstamos para construcción, subsidios gubernamentales y programas especializados de financiamiento para ADU. Algunas ciudades ofrecen incentivos para la construcción de ADU, como tarifas reducidas o procesos de aprobación simplificados."
+        "question": "Do you offer financing for construction and remodeling?",
+        "answer": "Yes, we help homeowners find suitable financing options, which may include home equity loans, construction loans, government grants, and specialized ADU financing programs. Some cities offer incentives for building ADUs, such as reduced fees or streamlined approval processes."
       },
       "5": {
-        "question": "¿Cuánto tiempo toma una remodelación o construcción nueva?",
-        "answer": "El tiempo depende de la complejidad y alcance del proyecto. Una construcción completa de ADU generalmente toma de 4 a 6 meses desde el diseño hasta la finalización. Las remodelaciones interiores o mejoras en patios pueden tomar desde unas semanas hasta varios meses."
+        "question": "How long does a remodel or new construction take?",
+        "answer": "The timeline depends on the complexity and scope of the project. A complete ADU build typically takes 4 to 6 months from design to completion. Interior remodels or backyard improvements can take anywhere from a few weeks to several months."
       },
       "6": {
-        "question": "¿Qué tipos de diseños y visualizaciones proporcionan?",
-        "answer": "Proporcionamos visualizaciones completas que incluyen bocetos conceptuales, planos arquitectónicos 2D y renders 3D detallados que muestran cómo se verá la estructura final. También ofrecemos recorridos virtuales que permiten 'caminar' por el espacio futuro mediante simulaciones digitales."
+        "question": "What types of designs and visualizations do you provide?",
+        "answer": "We provide complete visualizations including conceptual sketches, 2D architectural plans, and detailed 3D renders showing what the final structure will look like. We also offer virtual tours that allow you to 'walk' through the future space using digital simulations."
       },
       "7": {
-        "question": "¿Pueden ayudarme a maximizar el valor de mi propiedad?",
-        "answer": "¡Absolutamente! Nuestro equipo se especializa en identificar mejoras estratégicas que mejoran tanto la funcionalidad como el valor de la propiedad. Ya sea mediante construcción de ADU, transformación de patios o renovaciones interiores, proporcionamos recomendaciones expertas adaptadas al potencial de tu terreno."
+        "question": "Can you help me maximize my property’s value?",
+        "answer": "Absolutely! Our team specializes in identifying strategic improvements that enhance both functionality and property value. Whether through ADU construction, backyard transformations, or interior renovations, we provide expert recommendations tailored to your lot’s potential."
       },
       "8": {
-        "question": "¿Cómo garantizan transparencia y rapidez en la construcción?",
-        "answer": "Nuestro enfoque combina comunicación clara, cronogramas estructurados y gestión eficiente de proyectos para minimizar interrupciones. Proporcionamos actualizaciones periódicas, desgloses detallados de costos y cronogramas realistas de finalización. Nuestras relaciones con proveedores y autoridades municipales nos permiten acelerar los procesos de permisos y abastecimiento."
+        "question": "How do you ensure transparency and speed in construction?",
+        "answer": "Our approach combines clear communication, structured timelines, and efficient project management to minimize disruptions. We provide regular updates, detailed cost breakdowns, and realistic completion schedules. Our relationships with suppliers and municipal authorities allow us to speed up permitting and procurement processes."
       },
       "9": {
-        "question": "¿Qué tipos de proyectos para patios construyen?",
-        "answer": "Nos especializamos en crear espacios exteriores hermosos y funcionales que mejoran la calidad de vida. Nuestros proyectos incluyen patios personalizados, pérgolas, cocinas exteriores, fogatas y características de paisajismo que maximizan el disfrute y la utilidad del espacio."
+        "question": "What types of backyard projects do you build?",
+        "answer": "We specialize in creating beautiful and functional outdoor spaces that enhance quality of life. Our projects include custom patios, pergolas, outdoor kitchens, fire pits, and landscaping features that maximize enjoyment and usability."
       },
       "10": {
-        "question": "¿Cómo puedo comenzar con DWELLING PLUS?",
-        "answer": "¡Comenzar es sencillo! Contáctanos para una consulta personalizada donde evaluaremos tu propiedad, discutiremos tu visión y presentaremos conceptos de diseño iniciales. Una vez elegida una dirección para el proyecto, nos encargamos de todo: desde la planificación detallada y permisos municipales hasta la construcción e inspecciones finales."
+        "question": "How can I get started with DWELLING PLUS?",
+        "answer": "Getting started is easy! Contact us for a personalized consultation where we will assess your property, discuss your vision, and present initial design concepts. Once a project direction is chosen, we handle everything—from detailed planning and municipal permits to construction and final inspections."
       }
     }
   },
   "contact": {
-    "title": "Información de Contacto",
-    "subtitle": "Contáctanos para cualquier pregunta o consulta.",
-    "callToAction": "Llama ahora para una consulta gratuita",
-    "emailPrompt": "Envíanos un correo para discutir tu proyecto",
+    "title": "Contact Information",
+    "subtitle": "Contact us with any questions or inquiries.",
+    "callToAction": "Call now for a free consultation",
+    "emailPrompt": "Send us an email to discuss your project",
     "form": {
-      "firstName": "Nombre",
-      "lastName": "Apellido",
-      "email": "Correo electrónico",
-      "phone": "Teléfono",
-      "address": "Dirección",
-      "city": "Ciudad",
-      "state": "Estado",
-      "zip": "Código Postal",
-      "message": "Mensaje",
-      "submit": "Enviar Mensaje",
-      "submitting": "Enviando...",
-      "addressPlaceholder": "Comienza a escribir tu dirección"
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "city": "City",
+      "state": "State",
+      "zip": "ZIP Code",
+      "message": "Message",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "addressPlaceholder": "Start typing your address"
     },
     "methods": {
-      "phone": "Teléfono",
-      "message": "Mensaje",
-      "whatsapp": "Whatsapp",
-      "email": "Correo electrónico"
+      "phone": "Phone",
+      "message": "Message",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
     }
   },
   "footer": {
     "content": {
-      "title": "Contenido",
-      "services": "Servicios",
-      "faqs": "Preguntas Frecuentes"
+      "title": "Content",
+      "services": "Services",
+      "faqs": "FAQ"
     },
     "company": {
-      "title": "Empresa",
-      "about": "Acerca de",
-      "development": "Desarrollo"
+      "title": "Company",
+      "about": "About",
+      "development": "Development"
     },
     "about": {
       "dwelling": {
         "title": "Dwelling",
-        "info": "Información"
+        "info": "Info"
       },
       "fortuneCode": {
         "title": "FortuneCode",
-        "info": "Información de desarrollo"
+        "info": "Development Info"
       }
     }
   },
   "questionForm": {
-    "title": "Haz una pregunta",
-    "title2": "Déjanos un medio de contacto",
-    "ariaLabel": "Formulario para realizar una pregunta",
-    "question": "Pregunta",
-    "questionPlaceholder": "Escribe tu pregunta...",
-    "sendButton": "Enviar",
-    "sendButton2": "Enviar",
-    "emailPlaceholder": "tucorreo@dominio.com",
-    "phone": "Teléfono",
+    "title": "Ask a Question",
+    "title2": "Leave us a contact method",
+    "ariaLabel": "Form to ask a question",
+    "question": "Question",
+    "questionPlaceholder": "Type your question...",
+    "sendButton": "Send",
+    "sendButton2": "Send",
+    "emailPlaceholder": "youremail@domain.com",
+    "phone": "Phone",
     "phonePlaceholder": "+53 5 123 4567",
-    "errorEmail": "Formato de email inválido.",
-    "errorPhone": "Formato de teléfono inválido.",
-    "atLeastOneField": "Debes proporcionar al menos email o teléfono válido."
+    "errorEmail": "Invalid email format.",
+    "errorPhone": "Invalid phone format.",
+    "atLeastOneField": "You must provide at least a valid email or phone number."
   }
 }

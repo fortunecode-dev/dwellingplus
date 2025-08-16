@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import {useTranslations} from 'next-intl';
+import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 interface Service {
@@ -17,10 +17,10 @@ interface Props {
 }
 
 export default function ServicesSection({ scrollToSection }: Props) {
-  const  t  = useTranslations();
-  const [modalVisible, setModalVisible] = useState(false);
+  const t = useTranslations();
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // Imágenes desde /public
   const serviceImages: Record<string, string[]> = {
@@ -30,38 +30,47 @@ export default function ServicesSection({ scrollToSection }: Props) {
     repair: ["/REPAIR/1.webp", "/REPAIR/2.webp"],
     support: ["/FINANCING/1.webp", "/FINANCING/2.webp"],
   };
-const servicesList=["0","1","2","3","4"]
-  const services: Service[] = servicesList.map((service)=>({
-    id:t(`services.servicesList.${service}.id`),
-    title:t(`services.servicesList.${service}.title`),
-    description:t(`services.servicesList.${service}.description`),
-    content:t(`services.servicesList.${service}.content`),
-    images:serviceImages[t(`services.servicesList.${service}.id`)]||[]
+
+  const servicesList = ["0", "1", "2", "3", "4"];
+  const services: Service[] = servicesList.map((service) => ({
+    id: t(`services.servicesList.${service}.id`),
+    title: t(`services.servicesList.${service}.title`),
+    description: t(`services.servicesList.${service}.description`),
+    content: t(`services.servicesList.${service}.content`),
+    images: serviceImages[t(`services.servicesList.${service}.id`)] || [],
   }));
 
   const openModalWithService = (service: Service) => {
     setSelectedService(service);
     setCurrentImageIndex(0);
-    setModalVisible(true);
+    setLightboxOpen(false);
+  };
+
+  const closeModal = () => {
+    setSelectedService(null);
+    setLightboxOpen(false);
   };
 
   const handlePrevImage = () => {
-    if (!selectedService) return;
+    if (!selectedService?.images?.length) return;
     setCurrentImageIndex((prev) =>
-      prev === 0 && selectedService?.images?.length? selectedService.images.length - 1 : prev - 1
+      prev === 0 ? selectedService.images!.length - 1 : prev - 1
     );
   };
 
   const handleNextImage = () => {
-    if (!selectedService) return;
+    if (!selectedService?.images?.length) return;
     setCurrentImageIndex((prev) =>
-     selectedService?.images?.length&& prev === selectedService.images.length - 1 ? 0 : prev + 1
+      prev === selectedService.images!.length - 1 ? 0 : prev + 1
     );
   };
 
+  const currentImageSrc =
+    selectedService?.images?.[currentImageIndex] ?? "/placeholder.webp";
+
   return (
     <section
-      id="#services"
+      id="services"
       className="relative flex flex-col items-center justify-center w-full py-16 bg-white"
     >
       {/* Fondo */}
@@ -71,55 +80,68 @@ const servicesList=["0","1","2","3","4"]
           alt="Services background"
           fill
           className="object-cover"
+          priority
         />
-        <div className="absolute inset-0 backdrop-blur-sm bg-white/50" />
+        <div className="absolute inset-0 backdrop-blur-[3px] bg-white/10" />
       </div>
 
       {/* Contenido */}
-      <div className="relative z-10 max-w-6xl w-full px-4">
-          <>
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
-              {t("services.title")}
-            </h2>
-            <p className="text-xl md:text-2xl font-medium text-center text-gray-900 mb-8">
-              {t("services.subtitle")}
-            </p>
+      <div className="relative z-10 m-2 p-2 bg-white/60 rounded-xl max-w-6xl w-full px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-2">
+          {t("services.title")}
+        </h2>
+        <p className="text-xl md:text-2xl font-medium text-center text-gray-900 mb-1">
+          {t("services.subtitle")}
+        </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {services?.map((service) => (
-                <button
-                  key={service.id}
-                  onClick={() => openModalWithService(service)}
-                  className="bg-white/60 rounded-lg shadow hover:shadow-lg overflow-hidden transition"
-                >
-                  <Image
-                    src={service?.images?.[0]??""}
-                    alt={service.title}
-                    width={400}
-                    height={200}
-                    className="object-cover w-full h-40"
-                  />
-                  <div className="p-4">
-                    <h3 className="font-bold text-lg text-gray-900">{service.title}</h3>
-                    <p className="text-gray-700 text-sm opacity-80 line-clamp-3">
-                      {service.description}
-                    </p>
-                    <p className="mt-3 text-sm font-semibold text-right">{t("common.readMore")}</p>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </>
+        {/* Grid de cards */}
+        <div className="grid grid-cols-1 p-2 md:grid-cols-3 gap-4">
+          {services.map((service) => (
+            <button
+              key={service.id}
+              onClick={() => openModalWithService(service)}
+              className="group bg-white/70 rounded-lg shadow hover:shadow-lg overflow-hidden transition border border-gray-100 text-left"
+            >
+              {/* Imagen con altura menor en móvil */}
+              <div className="relative w-full h-32 sm:h-40 md:h-48">
+                <Image
+                  src={service.images?.[0] ?? "/placeholder.webp"}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+
+              {/* Texto con padding reducido en móvil */}
+              <div className="p-3 sm:p-4">
+                <h3 className="font-bold text-base sm:text-lg text-gray-900">
+                  {service.title}
+                </h3>
+                <p className="text-gray-700 text-xs sm:text-sm opacity-90 line-clamp-3">
+                  {service.description}
+                </p>
+                <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-semibold text-right">
+                  {t("common.readMore")}
+                </p>
+              </div>
+            </button>
+          ))}
+        </div>
+
       </div>
 
-      {/* Modal */}
+      {/* Modal detalle */}
       {selectedService && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg max-w-4xl w-full p-6 relative">
+          <div className="bg-white rounded-xl max-w-5xl w-full p-6 relative mx-2">
             {/* Cerrar */}
             <button
-              onClick={() => setModalVisible(false)}
-              className="absolute top-3 right-3 text-gray-600 hover:text-black"
+              onClick={closeModal}
+              className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl leading-none"
+              aria-label="Close"
+              title="Close"
             >
               ✕
             </button>
@@ -135,8 +157,8 @@ const servicesList=["0","1","2","3","4"]
                 <div className="flex gap-3">
                   <button
                     onClick={() => {
-                      setModalVisible(false);
-                      if (scrollToSection) scrollToSection("contact", true);
+                      closeModal();
+                      scrollToSection?.("contact", true);
                     }}
                     className="bg-[#315072] text-white px-4 py-2 rounded hover:bg-[#253A50] transition"
                   >
@@ -147,29 +169,103 @@ const servicesList=["0","1","2","3","4"]
 
               {/* Carrusel */}
               <div className="flex-1 relative">
-                <Image
-                  src={selectedService?.images?.[currentImageIndex]??""}
-                  alt={`${selectedService.title} ${currentImageIndex + 1}`}
-                  width={500}
-                  height={300}
-                  className="rounded-lg object-cover w-full h-64"
-                />
+                <button
+                  onClick={() => setLightboxOpen(true)}
+                  className="block w-full"
+                  aria-label="Open image fullscreen"
+                  title="Open image fullscreen"
+                >
+                  <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                    <Image
+                      src={currentImageSrc}
+                      alt={`${selectedService.title} ${currentImageIndex + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                    />
+                  </div>
+                </button>
+
                 {/* Flechas */}
                 <button
                   onClick={handlePrevImage}
-                  className="absolute top-1/2 left-0 -translate-y-1/2 bg-white/70 px-2 py-1 rounded-full"
+                  className="absolute top-1/2 left-0 -translate-y-1/2 bg-white/80 px-3 py-1.5 rounded-full shadow hover:bg-white"
+                  aria-label="Previous image"
+                  title="Previous"
                 >
                   ‹
                 </button>
                 <button
                   onClick={handleNextImage}
-                  className="absolute top-1/2 right-0 -translate-y-1/2 bg-white/70 px-2 py-1 rounded-full"
+                  className="absolute top-1/2 right-0 -translate-y-1/2 bg-white/80 px-3 py-1.5 rounded-full shadow hover:bg-white"
+                  aria-label="Next image"
+                  title="Next"
                 >
                   ›
                 </button>
+
+                {/* Indicadores */}
+                {selectedService.images?.length ? (
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+                    {selectedService.images.map((_, i) => (
+                      <span
+                        key={i}
+                        className={`h-2 w-2 rounded-full ${i === currentImageIndex
+                            ? "bg-white"
+                            : "bg-white/50 hover:bg-white/80"
+                          }`}
+                      />
+                    ))}
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
+
+          {/* LIGHTBOX: pantalla completa con object-contain */}
+          {lightboxOpen && (
+            <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
+              {/* Cerrar lightbox */}
+              <button
+                onClick={() => setLightboxOpen(false)}
+                className="absolute top-4 right-4 text-white/80 hover:text-white text-3xl"
+                aria-label="Close fullscreen"
+                title="Close"
+              >
+                ✕
+              </button>
+
+              {/* Navegación */}
+              <button
+                onClick={handlePrevImage}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl"
+                aria-label="Previous image"
+                title="Previous"
+              >
+                ‹
+              </button>
+              <button
+                onClick={handleNextImage}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl"
+                aria-label="Next image"
+                title="Next"
+              >
+                ›
+              </button>
+
+              {/* Imagen central contenida */}
+              <div className="relative w-[92vw] h-[88vh]">
+                <Image
+                  src={currentImageSrc}
+                  alt={`${selectedService.title} fullscreen`}
+                  fill
+                  className="object-contain"
+                  sizes="100vw"
+                  priority
+                />
+              </div>
+            </div>
+          )}
         </div>
       )}
     </section>

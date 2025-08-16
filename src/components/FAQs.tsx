@@ -26,11 +26,11 @@ export default function FAQSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={sectionRef} className="relative w-full min-h-screen">
+    <div ref={sectionRef} className="relative w-full min-h-screen" id="faq">
       {/* Fondo fullscreen */}
       <div className="absolute inset-0 -z-10">
         <Image src="/main/faqs.jpg" alt="FAQs" fill className="object-cover" priority />
-        <div className="absolute inset-0 backdrop-blur-md" />
+        <div className="absolute inset-0 backdrop-blur-[3px]" />
       </div>
 
       {/* Wrapper */}
@@ -49,7 +49,7 @@ export default function FAQSection() {
           <div className="mb-10 grid w-full place-items-stretch gap-6 px-4 md:grid-cols-[1fr_minmax(320px,520px)] lg:gap-8">
             {/* Lista preguntas */}
             <div className="flex-1 m-auto">
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 p-2 lg:p-3">
+              <div className="grid grid-cols-1 gap-3 p-2">
                 {faqs.map((faq, i) => {
                   const isSelected = i === selectedIndex;
                   return (
@@ -70,7 +70,7 @@ export default function FAQSection() {
                     >
                       <span
                         className="font-bold"
-                        style={{ fontSize: isSelected ? 19 : 17 }}
+                        style={{ fontSize: 17 }}
                       >
                         {faq.question}
                       </span>
@@ -80,7 +80,7 @@ export default function FAQSection() {
               </div>
 
               {/* Form en móvil */}
-              <div className="mt-8 rounded-xl border bg-white p-4 md:hidden">
+              <div className="mt-3 rounded-xl p-2 md:hidden">
                 <h4 className="py-2 text-center text-2xl font-bold text-gray-800">
                   {t("questionForm.title")}
                 </h4>
