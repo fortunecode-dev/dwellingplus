@@ -194,7 +194,7 @@ export default function ContactSection() {
       {/* Fondo */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/main/contact.jpg"
+          src="/main/contact copia.jpg"
           alt="Contact"
           fill
           priority
@@ -202,6 +202,7 @@ export default function ContactSection() {
         />
         <div className="absolute inset-0 backdrop-blur-[5px]" />
       </div>
+ <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
 
       {/* Contenedor general */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-2 sm:px-4">

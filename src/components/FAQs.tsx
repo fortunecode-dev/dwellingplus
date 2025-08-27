@@ -29,9 +29,11 @@ export default function FAQSection() {
     <div ref={sectionRef} className="relative w-full min-h-screen" id="faq">
       {/* Fondo fullscreen */}
       <div className="absolute inset-0 -z-10">
-        <Image src="/main/faqs.jpg" alt="FAQs" fill className="object-cover" priority />
+        <Image src="/main/faqs copia.jpg" alt="FAQs" fill className="object-cover" priority />
         <div className="absolute inset-0 backdrop-blur-[3px]" />
       </div>
+ <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
+                       <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white  via-20% via-white/20 to-transparent" />
 
       {/* Wrapper */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-2 sm:px-4">

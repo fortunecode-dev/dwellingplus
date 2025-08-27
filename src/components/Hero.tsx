@@ -15,13 +15,13 @@ export default function Hero() {
             {/* Imagen de fondo con blur */}
             <div className="absolute inset-0">
                 <Image
-                    src="/main/landing.jpg"
+                    src="/main/landing copia.jpg"
                     alt="Landing background"
                     fill
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 backdrop-blur-[3px] bg-white/10" />
+            <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white  via-20% via-white/20 to-transparent" />
             </div>
 
             {/* Contenido */}

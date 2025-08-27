@@ -76,7 +76,7 @@ export default function ServicesSection({ scrollToSection }: Props) {
       {/* Fondo */}
       <div className="absolute inset-0">
         <Image
-          src="/main/services.jpeg"
+          src="/main/services copia.jpg"
           alt="Services background"
           fill
           className="object-cover"
@@ -84,6 +84,9 @@ export default function ServicesSection({ scrollToSection }: Props) {
         />
         <div className="absolute inset-0 backdrop-blur-[3px] bg-white/10" />
       </div>
+                       <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
+                       <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white  via-20% via-white/20 to-transparent" />
+
 
       {/* Contenido */}
       <div className="relative z-10 m-2 p-2 bg-white/60 rounded-xl max-w-6xl w-full px-4">
