@@ -32,7 +32,7 @@ export default function Hero() {
                     {/* Logo */}
                     <div className="flex justify-center items-center w-full mb-6 animate-fadeIn">
                         <Image
-                            src="/logo.png"
+                            src="/logo2.png"
                             alt="Logo"
                             width={ 700 }
                             height={  100 }

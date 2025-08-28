@@ -132,7 +132,16 @@ export default function ServicesSection({ scrollToSection }: Props) {
             </button>
           ))}
         </div>
-
+<div className="flex justify-center items-center w-full mb-6 animate-fadeIn">
+                        <Image
+                            src="/logo2.png"
+                            alt="Logo"
+                            width={ 200 }
+                            height={  50 }
+                            className="object-contain"
+                            priority
+                        />
+                    </div>
       </div>
 
       {/* Modal detalle */}

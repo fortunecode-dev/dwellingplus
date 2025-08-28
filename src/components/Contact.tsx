@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import {
@@ -12,6 +12,7 @@ import {
   FaFacebookMessenger,
   FaCommentDots,
 } from "react-icons/fa";
+import { ToastState, ToastKind, InlineToast } from "./Toast";
 
 const PHONE_CONTACT = process.env.NEXT_PUBLIC_PHONE_CONTACT || "+1 555-555-5555";
 const MAIL_CONTACT = process.env.NEXT_PUBLIC_MAIL_CONTACT || "info@example.com";
@@ -56,6 +57,14 @@ export default function ContactSection() {
   );
   const [showSuggestions, setShowSuggestions] = useState(false);
   const debounceRef = useRef<number | null>(null);
+
+  // Estado del toast
+  const [toast, setToast] = useState<ToastState | null>(null);
+
+  // Helper para mostrar toasts
+  const showToast = useCallback((kind: ToastKind, message: string) => {
+    setToast({ kind, message });
+  }, []);
 
   // Modal móvil (tel/sms/whatsapp)
   const [showContactModal, setShowContactModal] = useState(false);
@@ -126,7 +135,7 @@ export default function ContactSection() {
     setShowSuggestions(false);
   };
 
-  async function handleSubmit(e: React.FormEvent) {
+  const handleSubmit = useCallback(async (e: React.FormEvent)=> {
     e.preventDefault();
     const newErrors = {
       name: !formData.name.trim(),
@@ -134,8 +143,9 @@ export default function ContactSection() {
       email: !formData.email.trim(),
     };
     setErrors(newErrors);
-    if (newErrors.name || newErrors.lastName || newErrors.email) {
-      alert(t("common.requiredField"));
+     if (newErrors.name || newErrors.lastName || newErrors.email) {
+      // Antes: alert(t("common.requiredField"))
+      showToast("error", t("common.requiredField"));
       return;
     }
     setIsSubmitting(true);
@@ -177,13 +187,15 @@ export default function ContactSection() {
         city: "",
         postal: "",
       });
-      alert(t("common.success"));
-    } catch {
-      alert(t("common.error"));
+      // Antes: alert(t("common.success"))
+      showToast("success", t("dataSendSuccess"));
+    } catch (err) {
+      // Antes: alert(t("common.error"))
+      showToast("error", t("dataSendFailure"));
     } finally {
       setIsSubmitting(false);
     }
-  }
+  }, [formData, showToast, t]);
 
   return (
     <div
@@ -191,6 +203,8 @@ export default function ContactSection() {
       className="relative w-full min-h-screen scroll-mt-16"
       id="contact"
     >
+         {/* Toast global del formulario */}
+      <InlineToast toast={toast} onClose={() => setToast(null)} />
       {/* Fondo */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -202,14 +216,23 @@ export default function ContactSection() {
         />
         <div className="absolute inset-0 backdrop-blur-[5px]" />
       </div>
- <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
+      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
 
       {/* Contenedor general */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-2 sm:px-4">
         <div
           className="w-full max-w-6xl mx-auto my-8 sm:my-12 rounded-2xl shadow-sm lg:drop-shadow-xl"
           style={{ backgroundColor: "rgba(255,255,255,0.70)" }}
-        >
+        >    <div className="flex justify-center items-center w-full my-4 animate-fadeIn">
+            <Image
+              src="/logo2.png"
+              alt="Logo"
+              width={200}
+              height={50}
+              className="object-contain"
+              priority
+            />
+          </div>
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 p-3 sm:p-5">
             {/* IZQUIERDA: título arriba, tel/correo centrados, redes abajo */}
             <aside

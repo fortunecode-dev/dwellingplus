@@ -2,10 +2,11 @@
 
 import { useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
+import { InlineToast } from "./Toast";
 
 type Props = {
   compact?: boolean;
-  onConfirm?: (data: { question: string; email?: string; phone?: string }) => void;
+  onConfirm?: (data: { question: string; email?: string; phone?: string }) => Promise<void>;
 };
 
 const emailRegex = /\S+@\S+\.\S+/;
@@ -48,6 +49,7 @@ export default function AskQuestion({ compact, onConfirm }: Props) {
       className={`w-full ${compact ? "space-y-2" : "space-y-3"}`}
       aria-label={t("questionForm.ariaLabel")}
     >
+      
       <div className="flex flex-col gap-1">
         {/* <label className="text-sm sm:text-sm font-medium text-gray-700">
           {t("questionForm.question")}

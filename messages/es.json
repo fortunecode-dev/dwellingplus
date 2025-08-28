@@ -19,7 +19,7 @@
     "adminPanel": "Panel de administración",
     "sending": "Enviando...",
     "clear": "Limpiar",
-    "cancel":"Cancelar"
+    "cancel": "Cancelar"
   },
   "header": {
     "sections": {
@@ -184,5 +184,7 @@
     "errorEmail": "Formato de email inválido.",
     "errorPhone": "Formato de teléfono inválido.",
     "atLeastOneField": "Debes proporcionar al menos email o teléfono válido."
-  }
+  },
+  "dataSendSuccess": "Sus datos han sido enviados, espere a ser contactado por dWellingPlus.",
+  "dataSendFailure": "Algo ha fallado enviando sus datos."
 }

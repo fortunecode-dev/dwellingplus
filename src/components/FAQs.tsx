@@ -1,16 +1,24 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState,useCallback } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import AskQuestion from "@/components/AskQuestion"; // ⬅️ Importa el nuevo componente
+import { InlineToast, ToastKind, ToastState } from "./Toast";
 
 type FAQ = { id: number; question: string; answer: string };
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || ""; // ej. https://api.tu-dominio.com
 
 export default function FAQSection() {
   const t = useTranslations();
+ // Estado del toast
+  const [toast, setToast] = useState<ToastState | null>(null);
 
-  const keys = ["0","1","2","3","4","5","6","7","8","9"] as const;
+  // Helper para mostrar toasts
+  const showToast = useCallback((kind: ToastKind, message: string) => {
+    setToast({ kind, message });
+  }, []);
+  const keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] as const;
   const faqs: FAQ[] = useMemo(
     () =>
       keys.map((k, i) => ({
@@ -25,15 +33,37 @@ export default function FAQSection() {
   const [showAnswerModal, setShowAnswerModal] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const  postQuestion = useCallback(async (payload:{email?:string,phone?:string,message?:string}) => {
+    try {
+     
+      const res = await fetch(`${API_BASE}/api/prospects/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        cache: "no-store",
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Failed");
+      // reset
+     
+      // Antes: alert(t("common.success"))
+      showToast("success", t("dataSendSuccess"));
+    } catch (err) {
+      // Antes: alert(t("common.error"))
+      showToast("error", t("dataSendFailure"));
+    } 
+  }, [showToast, t]);
+
   return (
     <div ref={sectionRef} className="relative w-full min-h-screen" id="faq">
       {/* Fondo fullscreen */}
+            <InlineToast toast={toast} onClose={() => setToast(null)} />
+
       <div className="absolute inset-0 -z-10">
         <Image src="/main/faqs copia.jpg" alt="FAQs" fill className="object-cover" priority />
         <div className="absolute inset-0 backdrop-blur-[3px]" />
       </div>
- <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
-                       <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white  via-20% via-white/20 to-transparent" />
+      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
+      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white  via-20% via-white/20 to-transparent" />
 
       {/* Wrapper */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-2 sm:px-4">
@@ -87,7 +117,7 @@ export default function FAQSection() {
                   {t("questionForm.title")}
                 </h4>
                 <AskQuestion
-                  // onConfirm={(payload) => postQuestion(payload)} // <- cuando quieras integrar servicio
+                 onConfirm={(payload) => postQuestion(payload)} // <- cuando quieras integrar servicio
                 />
               </div>
             </div>
@@ -96,6 +126,7 @@ export default function FAQSection() {
             <aside
               className="hidden max-w-[520px] justify-self-center rounded-xl p-2 lg:p-3 md:block m-auto"
             >
+
               <h3 className="mb-2 text-xl font-bold text-gray-800">
                 {faqs[selectedIndex]?.question}
               </h3>
@@ -109,10 +140,21 @@ export default function FAQSection() {
                 </h4>
                 <AskQuestion
                   compact
-                  // onConfirm={(payload) => postQuestion(payload)} // <- cuando quieras integrar servicio
+                // onConfirm={(payload) => postQuestion(payload)} // <- cuando quieras integrar servicio
                 />
               </div>
             </aside>
+
+          </div>
+          <div className="flex justify-center items-center w-full mb-6 animate-fadeIn">
+            <Image
+              src="/logo2.png"
+              alt="Logo"
+              width={200}
+              height={50}
+              className="object-contain"
+              priority
+            />
           </div>
         </div>
       </div>
@@ -141,6 +183,8 @@ export default function FAQSection() {
           </p>
         </div>
       </div>
+
     </div>
   );
 }
+

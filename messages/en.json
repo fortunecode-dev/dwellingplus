@@ -184,5 +184,7 @@
     "errorEmail": "Invalid email format.",
     "errorPhone": "Invalid phone format.",
     "atLeastOneField": "You must provide at least a valid email or phone number."
-  }
+  },
+  "dataSendSuccess":"Your data has been sended, wait to be contacted by dWellingPlus.",
+  "dataSendFailure":"Something has failed sending your data."
 }
