@@ -7,7 +7,6 @@ import AskQuestion from "@/components/AskQuestion"; // ⬅️ Importa el nuevo c
 import { InlineToast, ToastKind, ToastState } from "./Toast";
 
 type FAQ = { id: number; question: string; answer: string };
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || ""; // ej. https://api.tu-dominio.com
 
 export default function FAQSection() {
   const t = useTranslations();
@@ -36,7 +35,7 @@ export default function FAQSection() {
   const  postQuestion = useCallback(async (payload:{email?:string,phone?:string,message?:string}) => {
     try {
      
-      const res = await fetch(`${API_BASE}/api/prospects/contact`, {
+      const res = await fetch(`/api/prospect/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         cache: "no-store",
@@ -140,7 +139,7 @@ export default function FAQSection() {
                 </h4>
                 <AskQuestion
                   compact
-                // onConfirm={(payload) => postQuestion(payload)} // <- cuando quieras integrar servicio
+                 onConfirm={(payload) => postQuestion(payload)} // <- cuando quieras integrar servicio
                 />
               </div>
             </aside>

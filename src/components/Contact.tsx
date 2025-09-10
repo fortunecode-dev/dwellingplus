@@ -168,7 +168,7 @@ export default function ContactSection() {
               : undefined,
         },
       };
-      const res = await fetch(`${API_BASE}/api/prospects/contact`, {
+      const res = await fetch(`/api/prospect/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         cache: "no-store",
