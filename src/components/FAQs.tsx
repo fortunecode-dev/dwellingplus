@@ -39,7 +39,7 @@ export default function FAQSection() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         cache: "no-store",
-        body: JSON.stringify(payload),
+        body: JSON.stringify({email:payload.email,phone:payload.phone,metadata:{question:payload.message}}),
       });
       if (!res.ok) throw new Error("Failed");
       // reset
