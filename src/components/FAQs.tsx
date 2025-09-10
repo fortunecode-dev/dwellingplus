@@ -35,7 +35,7 @@ export default function FAQSection() {
   const  postQuestion = useCallback(async (payload:{email?:string,phone?:string,message?:string}) => {
     try {
      
-      const res = await fetch(`/api/prospect/contact`, {
+      const res = await fetch(`/api/prospect/question`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         cache: "no-store",

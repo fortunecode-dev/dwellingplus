@@ -84,8 +84,8 @@ export default function ServicesSection({ scrollToSection }: Props) {
         />
         <div className="absolute inset-0 backdrop-blur-[3px] bg-white/10" />
       </div>
-                       <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
-                       <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white  via-20% via-white/20 to-transparent" />
+      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
+      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white  via-20% via-white/20 to-transparent" />
 
 
       {/* Contenido */}
@@ -132,16 +132,16 @@ export default function ServicesSection({ scrollToSection }: Props) {
             </button>
           ))}
         </div>
-<div className="flex justify-center items-center w-full mb-6 animate-fadeIn">
-                        <Image
-                            src="/logo2.png"
-                            alt="Logo"
-                            width={ 200 }
-                            height={  50 }
-                            className="object-contain"
-                            priority
-                        />
-                    </div>
+        <div className="flex justify-center items-center w-full mb-6 animate-fadeIn">
+          <Image
+            src="/logo2.png"
+            alt="Logo"
+            width={200}
+            height={50}
+            className="object-contain"
+            priority
+          />
+        </div>
       </div>
 
       {/* Modal detalle */}
@@ -166,16 +166,13 @@ export default function ServicesSection({ scrollToSection }: Props) {
                   {selectedService.title}
                 </h3>
                 <p className="text-gray-700 mb-6">{selectedService.content}</p>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => {
-                      closeModal();
-                      scrollToSection?.("contact", true);
-                    }}
+                <div className="flex gap-3" onClick={closeModal}>
+                  <a
+                    href="#contact"
                     className="bg-[#315072] text-white px-4 py-2 rounded hover:bg-[#253A50] transition"
                   >
                     {t("common.getStarted")}
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -223,8 +220,8 @@ export default function ServicesSection({ scrollToSection }: Props) {
                       <span
                         key={i}
                         className={`h-2 w-2 rounded-full ${i === currentImageIndex
-                            ? "bg-white"
-                            : "bg-white/50 hover:bg-white/80"
+                          ? "bg-white"
+                          : "bg-white/50 hover:bg-white/80"
                           }`}
                       />
                     ))}

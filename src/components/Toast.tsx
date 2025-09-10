@@ -38,7 +38,7 @@ export function InlineToast({
   const visible = !!toast;
 
   return (
-    <div
+    toast &&<div
       aria-live="polite"
       aria-atomic="true"
       className="pointer-events-none fixed inset-x-0 bottom-4 z-[1000] flex justify-center px-4"

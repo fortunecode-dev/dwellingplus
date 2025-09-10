@@ -11,8 +11,8 @@ type FooterProps = {
 
 // Usa variables en tiempo de build para web
 const CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "";
-const BASE_URL  = process.env.NEXT_PUBLIC_BASE_URL || ""; // ej: https://tu-dominio.com
-const FACEBOOK_URL  = process.env.NEXT_PUBLIC_FACEBOOK_URL  || "https://facebook.com";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || ""; // ej: https://tu-dominio.com
+const FACEBOOK_URL = process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://facebook.com";
 const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://instagram.com";
 
 /**
@@ -40,7 +40,7 @@ export default function Footer({ scrollToSection }: FooterProps) {
   }, []);
 
   const about: Record<string, { title: string; info: string }> = {
-    dwelling: { title: "Dwelling",     info: "Info" },
+    dwelling: { title: "Dwelling", info: "Info" },
     fortuneCode: { title: "FortuneCode", info: "Info desarrollo" },
   };
 
@@ -84,18 +84,18 @@ export default function Footer({ scrollToSection }: FooterProps) {
                 {t("footer.content.title")}
               </p>
               <div className="space-y-1">
-                <button
-                  onClick={() => scrollToSection?.("services", true)}
+                <a
+                  href="#services"
                   className="block text-left text-[14px] text-white/90 hover:text-white"
                 >
                   {t("footer.content.services")}
-                </button>
-                <button
-                  onClick={() => scrollToSection?.("faq", true)}
+                </a>
+                <a
+                  href="#faq"
                   className="block text-left text-[14px] text-white/90 hover:text-white"
                 >
                   {t("footer.content.faqs")}
-                </button>
+                </a>
               </div>
             </div>
 
@@ -145,7 +145,7 @@ export default function Footer({ scrollToSection }: FooterProps) {
               </a>
             </div>
 
-          
+
           </div>
         </div>
       </div>
