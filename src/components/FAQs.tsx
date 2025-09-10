@@ -32,14 +32,14 @@ export default function FAQSection() {
   const [showAnswerModal, setShowAnswerModal] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  const  postQuestion = useCallback(async (payload:{email?:string,phone?:string,message?:string}) => {
+  const  postQuestion = useCallback(async (payload:{email?:string,phone?:string,question?:string}) => {
     try {
      
       const res = await fetch(`/api/prospect/question`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         cache: "no-store",
-        body: JSON.stringify({email:payload.email,phone:payload.phone,metadata:{question:payload.message}}),
+        body: JSON.stringify({email:payload.email,phone:payload.phone,metadata:{question:payload.question}}),
       });
       if (!res.ok) throw new Error("Failed");
       // reset
