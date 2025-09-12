@@ -216,14 +216,14 @@ export default function ContactSection() {
         />
         <div className="absolute inset-0 backdrop-blur-[5px]" />
       </div>
-      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
+      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent -z-10" />
 
       {/* Contenedor general */}
-      <div className="relative z-10 flex min-h-screen items-center justify-center px-2 sm:px-4">
+      <div className=" flex min-h-screen items-center justify-center px-2 sm:px-4">
         <div
           className="w-full max-w-6xl mx-auto my-8 sm:my-12 rounded-2xl shadow-sm lg:drop-shadow-xl"
           style={{ backgroundColor: "rgba(255,255,255,0.70)" }}
-        >    <div className="flex justify-center items-center w-full my-4 animate-fadeIn">
+        >  <div className="flex justify-center items-center w-full my-4 animate-fadeIn z-50 ">
             <Image
               src="/logo2.png"
               alt="Logo"

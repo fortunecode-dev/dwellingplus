@@ -92,7 +92,7 @@ export default function AskQuestion({ compact, onConfirm }: Props) {
         role="dialog"
         aria-modal="true"
       >
-        <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-lg">
+        <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-lg z-[99999]">
           <button
             type="button"
             onClick={() => setShowContactModal(false)}

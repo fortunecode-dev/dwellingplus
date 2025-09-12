@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -51,22 +51,34 @@ export default function ServicesSection({ scrollToSection }: Props) {
     setLightboxOpen(false);
   };
 
-  const handlePrevImage = () => {
+  const handlePrevImage = useCallback(() => {
     if (!selectedService?.images?.length) return;
     setCurrentImageIndex((prev) =>
       prev === 0 ? selectedService.images!.length - 1 : prev - 1
     );
-  };
+  }, [selectedService]);
 
-  const handleNextImage = () => {
+  const handleNextImage = useCallback(() => {
     if (!selectedService?.images?.length) return;
     setCurrentImageIndex((prev) =>
       prev === selectedService.images!.length - 1 ? 0 : prev + 1
     );
-  };
+  }, [selectedService]);
 
   const currentImageSrc =
     selectedService?.images?.[currentImageIndex] ?? "/placeholder.webp";
+
+  // Accesos por teclado en fullscreen
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowLeft") handlePrevImage();
+      if (e.key === "ArrowRight") handleNextImage();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxOpen, handlePrevImage, handleNextImage]);
 
   return (
     <section
@@ -84,9 +96,8 @@ export default function ServicesSection({ scrollToSection }: Props) {
         />
         <div className="absolute inset-0 backdrop-blur-[3px] bg-white/10" />
       </div>
-      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white  via-20% via-white/20 to-transparent" />
-      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white  via-20% via-white/20 to-transparent" />
-
+      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-b from-white via-20% via-white/20 to-transparent" />
+      <div className="absolute bottom-0 h-[-0.1px] left-0 w-full inset-0 bg-gradient-to-t from-white via-20% via-white/20 to-transparent" />
 
       {/* Contenido */}
       <div className="relative z-10 m-2 p-2 bg-white/60 rounded-xl max-w-6xl w-full px-4">
@@ -105,7 +116,7 @@ export default function ServicesSection({ scrollToSection }: Props) {
               onClick={() => openModalWithService(service)}
               className="group bg-white/70 rounded-lg shadow hover:shadow-lg overflow-hidden transition border border-gray-100 text-left"
             >
-              {/* Imagen con altura menor en móvil */}
+              {/* Imagen */}
               <div className="relative w-full h-32 sm:h-40 md:h-48">
                 <Image
                   src={service.images?.[0] ?? "/placeholder.webp"}
@@ -117,7 +128,7 @@ export default function ServicesSection({ scrollToSection }: Props) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
 
-              {/* Texto con padding reducido en móvil */}
+              {/* Texto */}
               <div className="p-3 sm:p-4">
                 <h3 className="font-bold text-base sm:text-lg text-gray-900">
                   {service.title}
@@ -132,6 +143,7 @@ export default function ServicesSection({ scrollToSection }: Props) {
             </button>
           ))}
         </div>
+
         <div className="flex justify-center items-center w-full mb-6 animate-fadeIn">
           <Image
             src="/logo2.png"
@@ -148,14 +160,14 @@ export default function ServicesSection({ scrollToSection }: Props) {
       {selectedService && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl max-w-5xl w-full p-6 relative mx-2">
-            {/* Cerrar */}
+            {/* Cerrar modal detalle */}
             <button
               onClick={closeModal}
-              className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl leading-none"
+              className="absolute top-3 right-3 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/90 text-gray-900 hover:bg-white shadow ring-1 ring-black/10"
               aria-label="Close"
               title="Close"
             >
-              ✕
+              <span className="text-2xl leading-none">✕</span>
             </button>
 
             {/* Contenido modal */}
@@ -176,41 +188,57 @@ export default function ServicesSection({ scrollToSection }: Props) {
                 </div>
               </div>
 
-              {/* Carrusel */}
-              <div className="flex-1 relative">
-                <button
-                  onClick={() => setLightboxOpen(true)}
-                  className="block w-full"
-                  aria-label="Open image fullscreen"
-                  title="Open image fullscreen"
-                >
-                  <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                    <Image
-                      src={currentImageSrc}
-                      alt={`${selectedService.title} ${currentImageIndex + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                    />
-                  </div>
-                </button>
+              {/* Carrusel con áreas navegables de media-anchura */}
+              <div
+                className="flex-1 relative select-none"
+                onDoubleClick={() => setLightboxOpen(true)}
+                title="Double click to open fullscreen"
+              >
+                <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                  <Image
+                    src={currentImageSrc}
+                    alt={`${selectedService.title} ${currentImageIndex + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    priority
+                  />
+                </div>
 
-                {/* Flechas */}
+                {/* ÁREA IZQUIERDA = ANTERIOR */}
                 <button
                   onClick={handlePrevImage}
-                  className="absolute top-1/2 left-0 -translate-y-1/2 bg-white/80 px-3 py-1.5 rounded-full shadow hover:bg-white"
+                  className="absolute inset-y-0 left-0 w-1/2 group"
                   aria-label="Previous image"
                   title="Previous"
                 >
-                  ‹
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white drop-shadow text-5xl select-none pointer-events-none">
+                    ‹
+                  </div>
                 </button>
+
+                {/* ÁREA DERECHA = SIGUIENTE */}
                 <button
                   onClick={handleNextImage}
-                  className="absolute top-1/2 right-0 -translate-y-1/2 bg-white/80 px-3 py-1.5 rounded-full shadow hover:bg-white"
+                  className="absolute inset-y-0 right-0 w-1/2 group"
                   aria-label="Next image"
                   title="Next"
                 >
-                  ›
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white drop-shadow text-5xl select-none pointer-events-none">
+                    ›
+                  </div>
+                </button>
+
+                {/* Botón abrir fullscreen */}
+                <button
+                  onClick={() => setLightboxOpen(true)}
+                  className="absolute bottom-3 right-3 rounded-full bg-white/90 text-gray-900 px-3 py-1.5 text-sm shadow ring-1 ring-black/10 hover:bg-white"
+                  aria-label="Open image fullscreen"
+                  title="Open fullscreen"
+                >
+                  ⤢
                 </button>
 
                 {/* Indicadores */}
@@ -231,50 +259,59 @@ export default function ServicesSection({ scrollToSection }: Props) {
             </div>
           </div>
 
-          {/* LIGHTBOX: pantalla completa con object-contain */}
+          {/* LIGHTBOX fullscreen */}
           {lightboxOpen && (
-            <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
-              {/* Cerrar lightbox */}
+            <div className="fixed inset-0 bg-black/95 z-[55] flex items-center justify-center">
+              {/* Botón cerrar, siempre por encima */}
               <button
                 onClick={() => setLightboxOpen(false)}
-                className="absolute top-4 right-4 text-white/80 hover:text-white text-3xl"
+                className="absolute top-4 right-4 inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/50 text-gray-900 hover:bg-white shadow-2xl ring-1 ring-black/20 z-[60]"
                 aria-label="Close fullscreen"
                 title="Close"
               >
-                ✕
+                <span className="text-3xl leading-none">✕</span>
               </button>
 
-              {/* Navegación */}
-              <button
-                onClick={handlePrevImage}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl"
-                aria-label="Previous image"
-                title="Previous"
-              >
-                ‹
-              </button>
-              <button
-                onClick={handleNextImage}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-5xl"
-                aria-label="Next image"
-                title="Next"
-              >
-                ›
-              </button>
-
-              {/* Imagen central contenida */}
-              <div className="relative w-[92vw] h-[88vh]">
+              {/* Contenedor de la imagen con controles limitados al área */}
+              <div className="relative w-[92vw] h-[88vh] flex items-center justify-center">
+                {/* Imagen */}
                 <Image
                   src={currentImageSrc}
-                  alt={`${selectedService.title} fullscreen`}
+                  alt={`${selectedService!.title} fullscreen`}
                   fill
                   className="object-contain"
                   sizes="100vw"
                   priority
                 />
+
+                {/* Prev dentro del área de imagen */}
+                <button
+                  onClick={handlePrevImage}
+                  className="absolute left-0 ml-4 w-1/12 group flex items-center justify-center z-[56] bg-white/30 rounded-full"
+                  aria-label="Previous image"
+                >
+                  {/* <div className="absolute inset-0  group-hover:bg-white/10 transition-colors rounded-l-lg" /> */}
+                  <span className="text-white text-6xl drop-shadow opacity-90 group-hover:opacity-100 z-20">
+                    ‹
+                  </span>
+                </button>
+
+                {/* Next dentro del área de imagen */}
+                <button
+                  onClick={handleNextImage}
+                  className="absolute right-0 mr-4 w-1/12  group flex items-center justify-center z-[56] bg-white/30 rounded-full"
+                  aria-label="Next image"
+                >
+                  {/* <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors rounded-r-lg" /> */}
+                  <span className="text-white text-6xl drop-shadow opacity-90 group-hover:opacity-100 z-20">
+                    ›
+                  </span>
+                </button>
               </div>
             </div>
           )}
+
+
         </div>
       )}
     </section>
