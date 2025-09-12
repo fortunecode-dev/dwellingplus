@@ -183,7 +183,8 @@
     "phonePlaceholder": "+53 5 123 4567",
     "errorEmail": "Formato de email inválido.",
     "errorPhone": "Formato de teléfono inválido.",
-    "atLeastOneField": "Debes proporcionar al menos email o teléfono válido."
+    "atLeastOneField": "Debes proporcionar al menos email o teléfono válido.",
+    "onSubmit":"Enviando..."
   },
   "dataSendSuccess": "Sus datos han sido enviados, espere a ser contactado por dWellingPlus.",
   "dataSendFailure": "Algo ha fallado enviando sus datos."

@@ -18,6 +18,7 @@ export default function AskQuestion({ compact, onConfirm }: Props) {
   const [showContactModal, setShowContactModal] = useState(false);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [onSubmit, setOnSubmit] = useState(false);
 
   const emailValid = !email || emailRegex.test(email.trim());
   const phoneValid = !phone || phoneRegex.test(phone.trim());
@@ -33,7 +34,8 @@ export default function AskQuestion({ compact, onConfirm }: Props) {
 
   const handleConfirm = () => {
     if (!hasContact) return;
-    onConfirm?.({ question, email: email || undefined, phone: phone || undefined });
+    setOnSubmit(true)
+    onConfirm?.({ question, email: email || undefined, phone: phone || undefined }).then(()=>setOnSubmit(false));
     setShowContactModal(false);
     setQuestion("");
     setEmail("");
@@ -157,11 +159,11 @@ export default function AskQuestion({ compact, onConfirm }: Props) {
             <button
               type="button"
               onClick={handleConfirm}
-              disabled={!hasContact}
+              disabled={!hasContact || onSubmit}
               className={`flex-1 rounded-lg px-4 py-2 font-semibold text-gray-900 transition
                 ${hasContact ? "bg-blue-300 hover:bg-blue-400" : "bg-gray-200 cursor-not-allowed"}`}
             >
-              {t("questionForm.sendButton2")}
+              {onsubmit?t("questionForm.onSubmit"):t("questionForm.sendButton2")}
             </button>
           </div>
         </div>
