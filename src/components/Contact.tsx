@@ -115,7 +115,7 @@ export default function ContactSection() {
         })
       );
       setAddressSuggestions(mapped);
-      setShowSuggestions(true);
+      // setShowSuggestions(true);
     } catch {
       setAddressSuggestions([]);
       setShowSuggestions(false);
