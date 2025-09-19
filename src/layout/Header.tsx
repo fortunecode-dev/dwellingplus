@@ -13,7 +13,8 @@ export default function Header(props: { sections: string[]; locale: string }) {
   const isScrolled = useScrolled();
   const [isPending, startTransition] = useTransition();
   const t = useTranslations();
-
+const FACEBOOK_URL = process.env.NEXT_PUBLIC_FACEBOOK_URL || "#";
+const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#";
   const toggleLanguage = () => {
     const newLang = props.locale === "en" ? "es" : "en";
     startTransition(() => {
@@ -62,14 +63,14 @@ export default function Header(props: { sections: string[]; locale: string }) {
             {props.locale === "en" ? "EN" : "ES"}
           </button>
           <Link
-            href="https://facebook.com"
+            href={FACEBOOK_URL}
             target="_blank"
             className="hover:scale-105 transition-transform"
           >
             <FaFacebook size={28} color="#315072" />
           </Link>
           <Link
-            href="https://instagram.com"
+            href={INSTAGRAM_URL}
             target="_blank"
             className="hover:scale-105 transition-transform"
           >
@@ -136,14 +137,14 @@ export default function Header(props: { sections: string[]; locale: string }) {
           </Link>
           <div className="flex gap-4 mt-4">
             <Link
-              href="https://facebook.com"
+              href="https://facebook.com/dwellingplus.studio"
               target="_blank"
               className="hover:scale-105 transition-transform"
             >
               <FaFacebook size={36} color="#315072" />
             </Link>
             <Link
-              href="https://instagram.com"
+              href="https://instagram.com/dwellingplus.studio"
               target="_blank"
               className="hover:scale-105 transition-transform"
             >

@@ -20,8 +20,6 @@ const FACEBOOK_URL = process.env.NEXT_PUBLIC_FACEBOOK_URL || "#";
 const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#";
 const WHATSAPP_URL =
   process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/15555555555";
-const MESSENGER_URL = process.env.NEXT_PUBLIC_MESSENGER_URL || "#";
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || ""; // ej. https://api.tu-dominio.com
 
 type Suggestion = {
   display: string;
@@ -319,14 +317,6 @@ export default function ContactSection() {
                   aria-label="WhatsApp"
                 >
                   <FaWhatsapp size={26} className="text-white" />
-                </a>
-                <a
-                  href={MESSENGER_URL}
-                  target="_blank"
-                  className="hover:scale-110 transition-transform"
-                  aria-label="Messenger"
-                >
-                  <FaFacebookMessenger size={26} className="text-white" />
                 </a>
               </div>
             </aside>
