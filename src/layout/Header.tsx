@@ -28,7 +28,7 @@ const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#";
         isScrolled ? "backdrop-blur bg-white/80 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center px-4 py-2 h-14">
+      <div className="max-w-7xl mx-auto flex items-center px-4 py-2 h-14 animate-fade-in">
         {/* Logo */}
         <div className="flex-1">
           <Link href={"/"} className="text-2xl font-bold text-[#315072]">

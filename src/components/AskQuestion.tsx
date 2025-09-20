@@ -163,7 +163,7 @@ export default function AskQuestion({ compact, onConfirm }: Props) {
               className={`flex-1 rounded-lg px-4 py-2 font-semibold text-gray-900 transition
                 ${hasContact ? "bg-blue-300 hover:bg-blue-400" : "bg-gray-200 cursor-not-allowed"}`}
             >
-              {onsubmit?t("questionForm.onSubmit"):t("questionForm.sendButton2")}
+              {onSubmit?t("questionForm.onSubmit"):t("questionForm.sendButton2")}
             </button>
           </div>
         </div>

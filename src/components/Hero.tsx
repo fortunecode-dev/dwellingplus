@@ -30,20 +30,20 @@ export default function Hero() {
                     className={`flex flex-col justify-center items-center w-full`}
                 >
                     {/* Logo */}
-                    <div className="flex justify-center items-center w-full mb-6 animate-fadeIn">
+                    <div className="flex justify-center items-center w-full mb-6 animate-fade-in">
                         <Image
                             src="/logo2.png"
                             alt="Logo"
                             width={ 700 }
                             height={  100 }
-                            className="object-contain"
+                            className="object-contain "
                             priority
                         />
                     </div>
 
                     {/* Texto principal */}
                     <p
-                        className={`text-center text-gray-800 font-normal mb-6 text-xl `}
+                        className={`text-center text-gray-800 font-normal mb-6 text-xl animate-fade-in `}
                     >
                         {t("landing.title")}
                     </p>
@@ -52,13 +52,13 @@ export default function Hero() {
                     <div className="flex justify-center items-center gap-4">
                         <Link
                             href={"#services"}
-                            className="px-4 py-2 rounded-md font-semibold text-gray-800 hover:bg-gray-200 transition"
+                            className="px-4 py-2 rounded-md font-semibold text-gray-800 hover:bg-gray-200 animate-fade-in"
                         >
                             {t("common.moreInfo")}
                         </Link>
                         <Link
                             href={"#contact"}
-                            className="px-4 py-2 rounded-md font-semibold text-white bg-[#315072] hover:bg-[#253A50] transition"
+                            className="px-4 py-2 rounded-md font-semibold text-white bg-[#315072] hover:bg-[#253A50] animate-fade-in"
                         >
                             {t("common.getStarted")}
                         </Link>

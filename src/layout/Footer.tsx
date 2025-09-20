@@ -75,6 +75,9 @@ export default function Footer({ scrollToSection }: FooterProps) {
             <p className="mt-1 text-[12px] text-white/80">
               Map data © OpenStreetMap contributors
             </p>
+             <a className="mt-1 text-[12px] text-white/80" href="https://www.admin.dwellingplus.studio">
+              Admin panel
+            </a>
           </div>
 
           {/* Centro (2 columnas) */}

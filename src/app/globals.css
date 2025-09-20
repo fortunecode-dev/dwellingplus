@@ -1,5 +1,7 @@
 @import "tailwindcss";
-
+/* globals.css */
+@tailwind utilities;
+@plugin "@midudev/tailwind-animations";
 html {
   scroll-behavior: smooth;
 } 

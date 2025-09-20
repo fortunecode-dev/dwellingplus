@@ -114,7 +114,7 @@ export default function ServicesSection({ scrollToSection }: Props) {
             <button
               key={service.id}
               onClick={() => openModalWithService(service)}
-              className="group bg-white/70 rounded-lg shadow hover:shadow-lg overflow-hidden transition border border-gray-100 text-left"
+              className="group bg-white/70 rounded-lg shadow hover:shadow-lg overflow-hidden transition border border-gray-100 text-left "
             >
               {/* Imagen */}
               <div className="relative w-full h-32 sm:h-40 md:h-48">
